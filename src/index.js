@@ -1,9 +1,10 @@
 const url = "http://localhost:3000/flights"
-const image = document.querySelector("img#poster")
-const airline = document.querySelector("div#airline.airline")
-const duration = document.querySelector("#duration")
-const departureTime = document.querySelector("#departureTime")
-const availableTickets = document.querySelector("#ticket-num") // (capacity - ticketsSold)
+const imageElement = document.querySelector("img#poster")
+const airlineElement = document.querySelector("div#airline.airline")
+const durationElement = document.querySelector("#duration")
+const destinationElement = document.querySelector("#destination")
+const departureTimeElement = document.querySelector("#departureTime")
+const availableTicketsElement = document.querySelector("#ticket-num") // (capacity - ticketsSold)
 
 /*
 FIRST DELIVERABLE:
@@ -17,6 +18,7 @@ capacity and the number of tickets sold)
   - image
   - airline
   - duration
+  - destination
   - departure time
   - available tickets (capacity - ticketsSold)
 */
@@ -25,7 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("http://localhost:3000/flights/1")  // Use fetch to make a GET request for the first flight's details
     .then(response => response.json()) // JSONify the response
     .then(data => { // We don't need iteration on this one (only one flight is being requested)
-
+      imageElement.src = data.image
+      airlineElement.innerText = data.airline
+      durationElement.innerHTML = `${data.duration} minutes`
+      destinationElement.innerText = data.destination
+      departureTimeElement.innerHTML = data.departureTime
+      availableTicketsElement.innerHTML = data.capacity - data.ticketsSold
     })
 })
-
