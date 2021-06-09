@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       destinationElement.innerText = data.destination
       departureTimeElement.innerHTML = data.departureTime
       availableTicketsElement.innerHTML = data.capacity - data.ticketsSold
+      availableTicketsElement.dataset.capacity = data.capacity // <span data-capacity="5"> (actual number subject to change based on variable)
       availableTicketsElement.dataset.ticketsSold = data.ticketsSold // <span data-tickets-sold="3"> (actual number subject to change based on variable)
     })
 
@@ -54,25 +55,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttonElement = document.querySelector("div.ui.orange.button") // or document.querySelector(".button")
     buttonElement.addEventListener("click", (event) => {
       event.preventDefault()
-      const newTicketsSold = parseInt(availableTicketsElement.dataset.ticketsSold) + 1 // increment the amount of ticketsSold
+      if (availableTicketsElement.dataset.ticketsSold !== availableTicketsElement.dataset.capacity) {
+        const newTicketsSold = parseInt(availableTicketsElement.dataset.ticketsSold) + 1 // increment the amount of ticketsSold
+        const configurationObject = {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            ticketsSold: newTicketsSold
+          })
+        }
 
-      const configurationObject = {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify({
-          ticketsSold: newTicketsSold
-        })
+        fetch("http://localhost:3000/flights/1", configurationObject)
+          .then(response => response.json())
+          .then(data => {
+            // Update our note (availableTicketsElement.dataset.ticketsSold) to be the new/accurate amount of tickets sold
+            availableTicketsElement.dataset.ticketsSold = data.ticketsSold
+            availableTicketsElement.innerHTML = data.capacity - data.ticketsSold // re-calculate amount of available tickets based on new ticketsSold
+          })
+      } else {
+        alert("Tickets are sold out!")
       }
-
-      fetch("http://localhost:3000/flights/1", configurationObject)
-        .then(response => response.json())
-        .then(data => {
-          // Update our note (availableTicketsElement.dataset.ticketsSold) to be the new/accurate amount of tickets sold
-          availableTicketsElement.dataset.ticketsSold = data.ticketsSold
-          availableTicketsElement.innerHTML = data.capacity - data.ticketsSold // re-calculate amount of available tickets based on new ticketsSold
-        })
     })
 })
