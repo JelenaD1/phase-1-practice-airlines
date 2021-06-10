@@ -1,34 +1,34 @@
 {
-    "flights": [
-      {
-        "id": "1",
-        "airline": "American",
-        "duration": "153",
-        "capacity": 150,
-        "departureTime": "04:28PM",
-        "ticketsSold": 27,
-        "destination": "Memphis, TN (MEM) to Philadelphia, PA (PHL)",
-        "image": "https://i.pinimg.com/736x/9d/d4/54/9dd454c9c52850bdd9509038b19396a5.jpg"
-      },
-      {
-        "id": "2",
-        "airline": "Delta",
-        "duration": "185",
-        "capacity": 200,
-        "departureTime": "06:52AM",
-        "ticketsSold": 44,
-        "destination": "Austin, TX (AUS) to Los Angeles, CA (LAX)",
-        "image": "https://fontmeme.com/images/Delta-Logo.jpg"
-      },
-      {
-        "id": "3",
-        "airline": "Southwest",
-        "duration": "126",
-        "capacity": 175,
-        "departureTime": "12:32PM",
-        "ticketsSold": 31,
-        "destination": "Seattle, Washington (SEA) to San Francisco (SFO)",
-        "image": "https://external-preview.redd.it/WYJR3GOlISUKEVT7igB3eFEtW6X5bWs0y2RJ4qlg8BY.png?auto=webp&s=aacb583ee25415d2f9e6d632e2ab37cc8db57168"
-      }
-    ]
-  }
+  "flights": [
+    {
+      "id": "1",
+      "airline": "American",
+      "duration": "153",
+      "capacity": 150,
+      "departureTime": "04:28PM",
+      "ticketsSold": 54,
+      "destination": "Memphis, TN (MEM) to Philadelphia, PA (PHL)",
+      "image": "https://i.pinimg.com/736x/9d/d4/54/9dd454c9c52850bdd9509038b19396a5.jpg"
+    },
+    {
+      "id": "2",
+      "airline": "Delta",
+      "duration": "185",
+      "capacity": 200,
+      "departureTime": "06:52AM",
+      "ticketsSold": 44,
+      "destination": "Austin, TX (AUS) to Los Angeles, CA (LAX)",
+      "image": "https://fontmeme.com/images/Delta-Logo.jpg"
+    },
+    {
+      "id": "3",
+      "airline": "Southwest",
+      "duration": "126",
+      "capacity": 175,
+      "departureTime": "12:32PM",
+      "ticketsSold": 31,
+      "destination": "Seattle, Washington (SEA) to San Francisco (SFO)",
+      "image": "https://external-preview.redd.it/WYJR3GOlISUKEVT7igB3eFEtW6X5bWs0y2RJ4qlg8BY.png?auto=webp&s=aacb583ee25415d2f9e6d632e2ab37cc8db57168"
+    }
+  ]
+}
